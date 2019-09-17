@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./make-renatocaval.sh
+./make-renatocaval-olkb.sh
 
 echo "Set keyboard on RESET mode now."
 
