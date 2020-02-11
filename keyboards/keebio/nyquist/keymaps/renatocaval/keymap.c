@@ -383,22 +383,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return true;
           break;
 
-        case PURPLE:
-            rgblight_setrgb_purple();
-            return true;
-            break;
-        case GREEN:
-            rgblight_setrgb_green();
-            return true;
-            break;
-        case RED:
-            rgblight_setrgb_red();
-            return true;
-            break;
-        case ORANGE:
-            rgblight_setrgb_orange();
-            return true;
-            break;
       }
     return true;
 };
