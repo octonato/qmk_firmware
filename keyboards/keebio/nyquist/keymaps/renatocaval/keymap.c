@@ -47,7 +47,7 @@ enum nyquist_keycodes {
   U_SMILE,
 
   //  RGB colors
-  PURPLE,
+  MAGENTA,
   GREEN,
   RED,
   ORANGE
@@ -66,22 +66,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,    KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  KC_TAB,     KC_Q,       KC_W,       KC_COLN,    KC_R,      U_EQ_LT,    U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       KC_PIPE,    KC_SLSH,    KC_D,       KC_F,      U_LT_HY,    U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
+  KC_TAB,     KC_Q,       KC_W,       KC_UP,      KC_R,      U_EQ_LT,    U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       KC_PIPE,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
   KC_LSFT,    KC_TILD,    KC_X,       KC_C,       KC_LT,     U_LT_CL,    U_CL_LT,    KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_RAISE] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,    KC_CIRC,   KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
-  KC_TAB,     KC_Q,       KC_W,       KC_COLN,    KC_R,      U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       KC_PIPE,    KC_SLSH,    KC_D,       KC_F,      U_LT_HY,    U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
+  KC_TAB,     KC_Q,       KC_W,       KC_UP,      KC_R,      U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       KC_PIPE,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
   KC_LSFT,    KC_TILD,    KC_X,       KC_C,       KC_LT,     U_LT_CL,    U_CL_LT,   KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_CODE] = LAYOUT( \
-  U_TR_TK,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,    KC_CIRC,   KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
+  U_TR_TK,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
   KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_PIPE,    U_TASK,      U_LINK,       KC_ENT,  \
   CODE,       KC_A,       U_EC_SAVE,  KC_PIPE,    KC_QUES,    U_LT_HY,    U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
   KC_LSFT,    KC_NO,      U_CMT2,     U_CMT1,     KC_LT,      U_LT_CL,    U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,      KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
   KC_TAB,     KC_F12,     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,     KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_NO,  \
   KC_NO,      KC_NO,      KC_NO,      DANGER,     KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_NO, \
-  KC_LSFT,    KC_NO,      RGB_TOG,    RGB_MOD,    PURPLE,     GREEN,      RED,       ORANGE,     KC_NO,      KC_NO,        KC_NO,       KC_RSFT,  \
+  KC_LSFT,    KC_NO,      RGB_TOG,    RGB_MOD,    MAGENTA,    GREEN,      RED,       ORANGE,     KC_NO,      KC_NO,        KC_NO,       KC_RSFT,  \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
 ),
 
@@ -106,9 +106,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-#ifdef AUDIO_ENABLE
-  #define STARTUP_SONG SONG(STARTUP_SOUND)
-#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -379,6 +376,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case U_SMILE:
           if (record->event.pressed) {
             SEND_STRING(":-)");
+          }
+          return true;
+          break;
+
+        case MAGENTA:
+          if (record->event.pressed) {
+            rgblight_setrgb(RGB_MAGENTA);
           }
           return true;
           break;
