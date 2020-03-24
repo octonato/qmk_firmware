@@ -33,9 +33,6 @@ enum nyquist_keycodes {
   U_CL_SPC,   // ': '
   U_TR_TK,    // '``````' triple back-tick (back 3)
   U_TR_QT,    // '""""""' triple quote (back 3)
-  U_CMT1,     // '/** */'
-  U_CMT2,     // '/* */'
-  U_EC_SAVE,  // emacs save and quit
   // Scala
   U_FUNC,     // '{  => }' (back 5)
   U_FUNC2,    // '{ () => }' (back 6)
@@ -46,12 +43,10 @@ enum nyquist_keycodes {
   U_WINK,
   U_SMILE,
 
-  //  RGB colors
-  MAGENTA,
-  GREEN,
-  RED,
-  ORANGE
+  //  RGB
+  RGB_TOGG
   };
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -83,17 +78,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_CODE] = LAYOUT( \
   U_TR_TK,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
   KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_PIPE,    U_TASK,      U_LINK,       KC_ENT,  \
-  CODE,       KC_A,       U_EC_SAVE,  KC_PIPE,    KC_QUES,    U_LT_HY,    U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
-  KC_LSFT,    KC_NO,      U_CMT2,     U_CMT1,     KC_LT,      U_LT_CL,    U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
+  CODE,       KC_A,       KC_S,       KC_PIPE,    KC_QUES,    U_LT_HY,    U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
+  KC_LSFT,    KC_NO,      KC_X,       KC_C,       KC_LT,      U_LT_CL,    U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_FN_MEDIA ] = LAYOUT( \
-  KC_NO,      KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
-  KC_TAB,     KC_F12,     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,     KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_NO,  \
-  KC_NO,      KC_NO,      KC_NO,      DANGER,     KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_NO, \
-  KC_LSFT,    KC_NO,      RGB_TOG,    RGB_MOD,    MAGENTA,    GREEN,      RED,       ORANGE,     KC_NO,      KC_NO,        KC_NO,       KC_RSFT,  \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
+  KC_NO,      KC_F1,      KC_F2,      KC_F3,            KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
+  KC_TAB,     KC_F12,     KC_NO,      KC_NO,            KC_NO,      KC_NO,      KC_NO,     KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_NO,  \
+  KC_NO,      KC_NO,      KC_NO,      DANGER,           KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_NO, \
+  KC_LSFT,    KC_NO,      RGB_TOGG,    RGB_MODE_PLAIN,   KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_RSFT,  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,           LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
 ),
 
 [_DANGER] = LAYOUT( \
@@ -106,18 +101,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+bool rgb_on = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
+        case RGB_TOGG:
+
+          if (record->event.pressed) {
+            if (rgb_on) {
+                rgblight_disable();
+                rgb_on = false;
+            } else {
+                rgblight_enable();
+                rgb_on = true;
+            }
+          } else {
+            if (rgb_on) {
+                rgblight_sethsv(HSV_PURPLE);
+            }
+          }
+
+        return true;
+        break;
+
         case LOWER:
           if (record->event.pressed) {
             layer_on(_LOWER);
+            rgblight_sethsv(HSV_CYAN);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
             debug("lower on\n");
           } else {
             layer_off(_LOWER);
+            rgblight_sethsv(HSV_PURPLE);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
             debug("lower off\n");
           }
@@ -127,10 +144,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RAISE:
           if (record->event.pressed) {
             layer_on(_RAISE);
+            rgblight_sethsv(HSV_GREEN);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
             debug("raise on\n");
           } else {
             layer_off(_RAISE);
+            rgblight_sethsv(HSV_PURPLE);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
             debug("raise off\n");
           }
@@ -140,9 +159,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CODE:
           if (record->event.pressed) {
             layer_on(_CODE);
+            rgblight_sethsv(HSV_MAGENTA);
             debug("code on\n");
           } else {
             layer_off(_CODE);
+            rgblight_sethsv(HSV_PURPLE);
             debug("code off\n");
           }
           return false;
@@ -152,9 +173,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case FN_MEDIA:
           if (record->event.pressed) {
             layer_on(_FN_MEDIA);
+            rgblight_sethsv(HSV_ORANGE);
             debug("FN on\n");
           } else {
             layer_off(_FN_MEDIA);
+            rgblight_sethsv(HSV_PURPLE);
             debug("FN off\n");
           }
           return false;
@@ -163,9 +186,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DANGER:
           if (record->event.pressed) {
             layer_on(_DANGER);
+            rgblight_sethsv(HSV_RED);
             debug("DANGER on\n");
           } else {
             layer_off(_DANGER);
+            rgblight_sethsv(HSV_PURPLE);
             debug("DANGER off\n");
           }
           return false;
@@ -290,31 +315,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return true;
           break;
 
-        case U_CMT1:
-          if (record->event.pressed) {
-            SEND_STRING("/**");
-          } else {
-            SEND_STRING(SS_TAP(X_ENTER));
-          }
-          return true;
-          break;
-
-        case U_CMT2:
-          if (record->event.pressed) {
-            SEND_STRING("/*");
-          } else {
-            SEND_STRING(SS_TAP(X_ENTER));
-          }
-          return true;
-          break;
-
-        case U_EC_SAVE:
-          if (record->event.pressed) {
-            SEND_STRING(SS_DOWN(X_LCTRL) "xc" SS_UP(X_LCTRL));
-          }
-          return true;
-          break;
-
         // Scala
         case U_FUNC:
           if (record->event.pressed) {
@@ -376,13 +376,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case U_SMILE:
           if (record->event.pressed) {
             SEND_STRING(":-)");
-          }
-          return true;
-          break;
-
-        case MAGENTA:
-          if (record->event.pressed) {
-            rgblight_setrgb(RGB_MAGENTA);
           }
           return true;
           break;
