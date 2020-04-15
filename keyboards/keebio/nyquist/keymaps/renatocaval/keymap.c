@@ -14,7 +14,6 @@ enum nyquist_layers {
 
 enum nyquist_keycodes {
   QWERTY = SAFE_RANGE,
-  COLEMAK,
   LOWER,
   RAISE,
   CODE,
@@ -99,70 +98,73 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,    KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  KC_TAB,     KC_NO,      KC_NO,      KC_UP,      KC_NO,     U_EQ_LT,    U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       KC_PIPE,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
-  KC_LSFT,    KC_TILD,    KC_NO,      KC_NO,      KC_LT,     U_LT_CL,    U_CL_LT,    KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
+  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,    U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
+  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,    U_CL_LT,    KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_RAISE] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,    KC_CIRC,   KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
-  KC_TAB,     KC_NO,      KC_NO,      KC_UP,      KC_NO,     U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       KC_PIPE,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
-  KC_LSFT,    KC_TILD,    KC_NO,      KC_NO,      KC_LT,     U_LT_CL,    U_CL_LT,   KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
+  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
+  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,    U_CL_LT,   KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_CODE] = LAYOUT( \
   U_TR_TK,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
-  KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_PIPE,    U_TASK,      U_LINK,       KC_ENT,  \
-  CODE,       KC_NO,      KC_NO,      KC_PIPE,    KC_QUES,    U_LT_HY,    U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
-  KC_LSFT,    KC_NO,      KC_NO,      KC_NO,      KC_LT,      U_LT_CL,    U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
+  KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_TRNS,    U_TASK,      U_LINK,       KC_ENT,  \
+  CODE,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_QUES,    U_LT_HY,    U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
+  KC_LSFT,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_LT,      U_LT_CL,    U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_FN_MEDIA ] = LAYOUT( \
-  KC_NO,      KC_F1,      KC_F2,      KC_F3,            KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
-  KC_TAB,     KC_F12,     KC_NO,      KC_NO,            KC_NO,      KC_NO,      KC_NO,     KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_NO,  \
-  DANGER,      KC_NO,     KC_NO,      KC_NO,            KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_NO, \
-  KC_LSFT,    KC_NO,      RGB_TOGG,   RGB_MODE_PLAIN,   KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_RSFT,  \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,           LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
+  KC_TRNS,    KC_F1,      KC_F2,      KC_F3,            KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
+  KC_TAB,     KC_F12,     KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_TRNS,  \
+  DANGER,     KC_TRNS,    KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS, \
+  KC_LSFT,    KC_TRNS,    RGB_TOGG,   RGB_MODE_PLAIN,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_RSFT,  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,           LOWER,      KC_SPC,     KC_SPC,     RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
 ),
 
 [_DANGER] = LAYOUT( \
-  _______,    _______,    _______,    _______,    _______,    _______,    QWERTY,    COLEMAK,     _______,    _______,    _______,    RESET,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    DEBUG,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______\
+  _______,    _______,    _______,    _______,    _______,    _______,    DF(_QWERTY),   DF(_COLEMAK),   _______,    _______,    _______,    RESET,\
+  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    DEBUG,\
+  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    _______,\
+  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    _______,\
+  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    _______\
 )
 
 };
 
 bool rgb_on = false;
 
+
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
   default_layer_set(default_layer);
 }
 
+#define COLOR_LOWER     HSV_CYAN
+#define COLOR_RAISE     HSV_CYAN
+#define COLOR_FN_MEDIA  HSV_ORANGE
+#define COLOR_CODE      HSV_MAGENTA
+#define COLOR_DANGER    HSV_RED
+#define COLOR_QWERTY    HSV_PURPLE
+#define COLOR_COLEMAK   HSV_GREEN
+
+void change_layer_color(void) {
+    if (default_layer_state == 1 << _COLEMAK) {
+        rgblight_sethsv(HSV_GREEN);
+    } else {
+        rgblight_sethsv(HSV_PURPLE);
+    }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
-
-        case QWERTY:
-            if (record->event.pressed) {
-                persistent_default_layer_set(1UL<<_QWERTY);
-            }
-            return false;
-            break;
-
-        case COLEMAK:
-            if (record->event.pressed) {
-                persistent_default_layer_set(1UL<<_COLEMAK);
-            }
-            return false;
-            break;
 
         case RGB_TOGG:
 
@@ -176,7 +178,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
           } else {
             if (rgb_on) {
-                rgblight_sethsv(HSV_PURPLE);
+                change_layer_color();
             }
           }
 
@@ -186,13 +188,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LOWER:
           if (record->event.pressed) {
             layer_on(_LOWER);
-            rgblight_sethsv(HSV_CYAN);
+            rgblight_sethsv(COLOR_LOWER);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
             debug("lower on\n");
           } else {
             layer_off(_LOWER);
-            rgblight_sethsv(HSV_PURPLE);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
+            change_layer_color();
             debug("lower off\n");
           }
           return false;
@@ -201,13 +203,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RAISE:
           if (record->event.pressed) {
             layer_on(_RAISE);
-            rgblight_sethsv(HSV_GREEN);
+            rgblight_sethsv(COLOR_RAISE);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
             debug("raise on\n");
           } else {
             layer_off(_RAISE);
-            rgblight_sethsv(HSV_PURPLE);
             update_tri_layer(_LOWER, _RAISE, _FN_MEDIA);
+            change_layer_color();
             debug("raise off\n");
           }
           return false;
@@ -216,11 +218,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CODE:
           if (record->event.pressed) {
             layer_on(_CODE);
-            rgblight_sethsv(HSV_MAGENTA);
+            rgblight_sethsv(COLOR_CODE);
             debug("code on\n");
           } else {
             layer_off(_CODE);
-            rgblight_sethsv(HSV_PURPLE);
+            change_layer_color();
             debug("code off\n");
           }
           return false;
@@ -230,11 +232,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case FN_MEDIA:
           if (record->event.pressed) {
             layer_on(_FN_MEDIA);
-            rgblight_sethsv(HSV_ORANGE);
+            rgblight_sethsv(COLOR_FN_MEDIA);
             debug("FN on\n");
           } else {
             layer_off(_FN_MEDIA);
-            rgblight_sethsv(HSV_PURPLE);
+            change_layer_color();
             debug("FN off\n");
           }
           return false;
@@ -243,11 +245,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DANGER:
           if (record->event.pressed) {
             layer_on(_DANGER);
-            rgblight_sethsv(HSV_RED);
+            rgblight_sethsv(COLOR_DANGER);
             debug("DANGER on\n");
           } else {
             layer_off(_DANGER);
-            rgblight_sethsv(HSV_PURPLE);
+            change_layer_color();
             debug("DANGER off\n");
           }
           return false;
