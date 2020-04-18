@@ -5,6 +5,7 @@ extern keymap_config_t keymap_config;
 enum nyquist_layers {
   _QWERTY,
   _COLEMAK,
+  _CAVALCANTI,
   _LOWER,
   _RAISE,
   _CODE,
@@ -95,45 +96,65 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
 ),
 
+/* Colemak
+ * ,-----------------------------------------------------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   F  |   R  |   J  |   Y  |   U  |   I  |   O  |   P  | Del  |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Esc  |   A  |   S  |   H  |   T  |   G  |   D  |   N  |   E  |   L  |   ;  |  "   |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |Space |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_CAVALCANTI] = LAYOUT( \
+  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,    /**/    KC_6,        KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
+  KC_TAB,     KC_Q,       KC_W,       KC_F,       KC_R,      KC_J,    /**/    KC_Y,        KC_U,       KC_I,       KC_O,        KC_P,        KC_ENT, \
+  CODE,       KC_A,       KC_S,       KC_H,       KC_T,      KC_G,    /**/    KC_D,        KC_N,       KC_E,       KC_L,        KC_SCLN,     KC_QUOT, \
+  KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,    /**/    KC_K,        KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT , \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,  /**/    KC_SPC,      RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
+),
 
 [_LOWER] = LAYOUT( \
-  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,    KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,    U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
-  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,    U_CL_LT,    KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
+  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
+  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,  /**/   U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
+  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,  /**/   U_CL_LT,    KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_RAISE] = LAYOUT( \
-  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,    KC_CIRC,   KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
-  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,    U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
-  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,    U_CL_LT,   KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
+  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,   KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
+  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,  /**/   U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,  /**/   U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
+  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,  /**/   U_CL_LT,   KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_CODE] = LAYOUT( \
-  U_TR_TK,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
-  KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_TRNS,    U_TASK,      U_LINK,       KC_ENT,  \
-  CODE,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_QUES,    U_LT_HY,    U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
-  KC_LSFT,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_LT,      U_LT_CL,    U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
+  U_TR_TK,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,    /**/  KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
+  KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,  /**/  U_GT_EQ,   U_EQ_GT,    KC_TRNS,    U_TASK,      U_LINK,       KC_ENT,  \
+  CODE,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_QUES,    U_LT_HY,  /**/  U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
+  KC_LSFT,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_LT,      U_LT_CL,  /**/  U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,   /**/  KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_FN_MEDIA ] = LAYOUT( \
-  KC_TRNS,    KC_F1,      KC_F2,      KC_F3,            KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
-  KC_TAB,     KC_F12,     KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_TRNS,  \
-  DANGER,     KC_TRNS,    KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS, \
-  KC_LSFT,    KC_TRNS,    RGB_TOGG,   RGB_MODE_PLAIN,   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_RSFT,  \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,           LOWER,      KC_SPC,     KC_SPC,     RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
+  KC_TRNS,    KC_F1,      KC_F2,      KC_F3,            KC_F4,      KC_F5,   /**/   KC_F6,      KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
+  KC_TAB,     KC_F12,     KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS, /**/   KC_TRNS,    KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_TRNS,  \
+  DANGER,     KC_TRNS,    KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS, /**/   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS, \
+  KC_LSFT,    KC_TRNS,    RGB_TOGG,   RGB_MODE_PLAIN,   KC_TRNS,    KC_TRNS, /**/   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_RSFT,  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,           LOWER,      KC_SPC,  /**/   KC_SPC,     RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
 ),
 
 [_DANGER] = LAYOUT( \
-  _______,    _______,    _______,    _______,    _______,    _______,    DF(_QWERTY),   DF(_COLEMAK),   _______,    _______,    _______,    RESET,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    DEBUG,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    _______,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    _______,\
-  _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,        _______,    _______,    _______,    _______\
+  _______,    _______,    _______,    _______,    _______,    _______,  /**/   DF(_QWERTY),   DF(_COLEMAK),   DF(_CAVALCANTI),  _______,    _______,    RESET,\
+  _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    DEBUG,\
+  _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    _______,\
+  _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    _______,\
+  _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    _______\
 )
 
 };
@@ -146,19 +167,22 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-#define COLOR_LOWER     HSV_CYAN
-#define COLOR_RAISE     HSV_CYAN
-#define COLOR_FN_MEDIA  HSV_ORANGE
-#define COLOR_CODE      HSV_MAGENTA
-#define COLOR_DANGER    HSV_RED
-#define COLOR_QWERTY    HSV_PURPLE
-#define COLOR_COLEMAK   HSV_GREEN
+#define COLOR_LOWER         HSV_CYAN
+#define COLOR_RAISE         HSV_MAGENTA
+#define COLOR_FN_MEDIA      HSV_ORANGE
+#define COLOR_CODE          HSV_PINK
+#define COLOR_DANGER        HSV_RED
+#define COLOR_QWERTY        HSV_PURPLE
+#define COLOR_COLEMAK       HSV_ORANGE
+#define COLOR_CAVALCANTI    HSV_GREEN
 
 void change_layer_color(void) {
     if (default_layer_state == 1 << _COLEMAK) {
-        rgblight_sethsv(HSV_GREEN);
+        rgblight_sethsv(COLOR_COLEMAK);
+    } else if (default_layer_state == 1 << _CAVALCANTI) {
+        rgblight_sethsv(COLOR_CAVALCANTI);
     } else {
-        rgblight_sethsv(HSV_PURPLE);
+        rgblight_sethsv(COLOR_QWERTY);
     }
 }
 
