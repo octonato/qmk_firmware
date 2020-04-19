@@ -38,12 +38,34 @@ enum nyquist_keycodes {
   // Scala
   U_FUNC,     // '{  => }' (back 5)
   U_FUNC2,    // '{ () => }' (back 6)
-  U_CASE,      // 'case  => '(back 4)
+  U_MCASE,    // 'case  => '(back 4)
   U_LGUI,
   U_TASK,
   U_LINK,
   U_WINK,
   U_SMILE,
+
+  U_TRAIT,  // trait        t
+  U_OBJ,    // object       o
+  U_CLASS,  // class        c
+  U_CASE,   // case         x
+  U_ABS,    // abstract     a
+  U_SLD,    // sealed       s
+  U_FINAL,  // final        f
+  U_EXT,    // extends      e
+  U_WITH,   // with         w
+  U_MATCH,  // match        m
+  U_PRIV,   // private      p
+  U_NEW,    // new          n
+  U_PCKG,   // package      g
+  U_DEF,    // def          d
+  U_VAL,    // val          v
+  U_OVRD,   // override     r
+  U_IMPL,   // implicit     i
+  U_IMPT,   // import       k
+  U_YIELD,  // yield        y
+  U_LAZY,   // lazy         z
+
 
   //  RGB
   RGB_TOGG
@@ -54,74 +76,74 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 /* Qwerty
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
+ * ,-----------------------------------------.   ´-----------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   E  |   R  |   T  |   |   Y  |   U  |   I  |   O  |   P  | Del  |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * | Esc  |   A  |   S  |   D  |   F  |   G  |   |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   |   N  |   M  |   ,  |   .  |   /  |Enter |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |   |Space |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------,   `-----------------------------------------'
  */
 [_QWERTY] = LAYOUT( \
-  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,       KC_6,       KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
-  KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,      KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,        KC_P,        KC_ENT,  \
-  CODE,       KC_A,       KC_S,       KC_D,       KC_F,      KC_G,       KC_H,       KC_J,       KC_K,       KC_L,        KC_SCLN,     KC_QUOT, \
-  KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT,  \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
+  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,    /**/   KC_6,       KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
+  KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,      KC_T,    /**/   KC_Y,       KC_U,       KC_I,       KC_O,        KC_P,        KC_ENT,  \
+  CODE,       KC_A,       KC_S,       KC_D,       KC_F,      KC_G,    /**/   KC_H,       KC_J,       KC_K,       KC_L,        KC_SCLN,     KC_QUOT, \
+  KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,    /**/   KC_N,       KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT,  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,  /**/   KC_SPC,     RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
 ),
 
 
 /* Colemak
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
+ * ,-----------------------------------------.   ´-----------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   F  |   P  |   G  |   |   J  |   L  |   U  |   Y  |   ;  | Del  |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * | Esc  |   A  |   R  |   S  |   T  |   D  |   |   H  |   N  |   E  |   I  |   O  |  "   |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   |   K  |   M  |   ,  |   .  |   /  |Enter |
+ * |------+------+------+------+------+------|   |------+------+------+------+------+------|
+ * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |   |Space |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------,   `-----------------------------------------'
  */
 [_COLEMAK] = LAYOUT( \
-  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,      KC_6,        KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
-  KC_TAB,     KC_Q,       KC_W,       KC_F,       KC_P,      KC_G,      KC_J,        KC_L,       KC_U,       KC_Y,        KC_SCLN,     KC_ENT, \
-  CODE,       KC_A,       KC_R,       KC_S,       KC_T,      KC_D,      KC_H,        KC_N,       KC_E,       KC_I,        KC_O,        KC_QUOT, \
-  KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,      KC_K,        KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT , \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
+  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,     /**/   KC_6,        KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
+  KC_TAB,     KC_Q,       KC_W,       KC_F,       KC_P,      KC_G,     /**/   KC_J,        KC_L,       KC_U,       KC_Y,        KC_SCLN,     KC_ENT, \
+  CODE,       KC_A,       KC_R,       KC_S,       KC_T,      KC_D,     /**/   KC_H,        KC_N,       KC_E,       KC_I,        KC_O,        KC_QUOT, \
+  KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,     /**/   KC_K,        KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT , \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
 ),
 
 /* Colemak
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   F  |   R  |   J  |   Y  |   U  |   I  |   O  |   P  | Del  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   H  |   T  |   G  |   D  |   N  |   E  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
+ * ,-----------------------------------------.   ´-----------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   |   6   |   7  |   8  |   9  |   0  | Bksp |
+ * |------+------+------+------+------+------|   |-------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   F  |   R  |   J  |   |   Y   |   U  |   I  |   O  |   P  | Del  |
+ * |------+------+------+------+------+------|   |-------+------+------+------+------+------|
+ * | Esc  |   A  |   S  |   H  |   T  |   D  |   |   G   |   N  |   E  |   L  |   ;  |  "   |
+ * |------+------+------+------+------+------|   |-------+------+------+------+------+------|
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   |   K   |   M  |   ,  |   .  |   /  |Enter |
+ * |------+------+------+------+------+------|   |-------+------+------+------+------+------|
+ * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |   | Space |Raise | Left | Down |  Up  |Right |
+ * `-----------------------------------------,   `------------------------------------------'
  */
 [_CAVALCANTI] = LAYOUT( \
   KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,    /**/    KC_6,        KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
   KC_TAB,     KC_Q,       KC_W,       KC_F,       KC_R,      KC_J,    /**/    KC_Y,        KC_U,       KC_I,       KC_O,        KC_P,        KC_ENT, \
-  CODE,       KC_A,       KC_S,       KC_H,       KC_T,      KC_G,    /**/    KC_D,        KC_N,       KC_E,       KC_L,        KC_SCLN,     KC_QUOT, \
+  CODE,       KC_A,       KC_S,       KC_H,       KC_T,      KC_D,    /**/    KC_G,        KC_N,       KC_E,       KC_L,        KC_SCLN,     KC_QUOT, \
   KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,    /**/    KC_K,        KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT , \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,  /**/    KC_SPC,      RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
 ),
 
 [_LOWER] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,  /**/   U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
-  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,  /**/   U_CL_LT,    KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
+  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,  /**/   U_GT_EQ,    KC_BTN1,    KC_MS_U,    KC_BTN2,     KC_WH_U,      KC_ENT,  \
+  CODE,       KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,  /**/   U_HY_GT,    KC_MS_L,    KC_MS_D,    KC_MS_R,     KC_WH_D,      KC_DQUO, \
+  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_LT,     U_LT_CL,  /**/   U_CL_LT,    KC_ACL0,    KC_ACL1,    KC_ACL2,      KC_BSLS,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
@@ -134,19 +156,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_CODE] = LAYOUT( \
-  U_TR_TK,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,    /**/  KC_F6,     KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
-  KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,  /**/  U_GT_EQ,   U_EQ_GT,    KC_TRNS,    U_TASK,      U_LINK,       KC_ENT,  \
-  CODE,       KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_QUES,    U_LT_HY,  /**/  U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
-  KC_LSFT,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_LT,      U_LT_CL,  /**/  U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
+  U_TR_TK,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,    /**/  KC_F6,     KC_F7,      KC_F8,      KC_F9,       KC_F10,      KC_F11,  \
+  KC_TAB,     KC_TRNS,    U_WITH,     U_FINAL,    U_OVRD,     KC_TRNS,  /**/  U_YIELD,   U_EQ_GT,    KC_PIPE,    U_OBJ,       U_PRIV,       KC_ENT,  \
+  CODE,       U_ABS,      U_SLD,      KC_TRNS,    U_TRAIT,    U_DEF,    /**/  U_PCKG,    U_NEW,      U_EXT,      KC_TRNS,     U_WINK,       U_TR_QT, \
+  KC_LSFT,    U_LAZY,     U_CASE,     U_CLASS,    U_VAL,      KC_TRNS,  /**/  U_IMPT,    U_MATCH,    U_IMPL,     KC_TRNS,     KC_TRNS,      KC_RSFT,\
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,   /**/  KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_FN_MEDIA ] = LAYOUT( \
-  KC_TRNS,    KC_F1,      KC_F2,      KC_F3,            KC_F4,      KC_F5,   /**/   KC_F6,      KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
-  KC_TAB,     KC_F12,     KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS, /**/   KC_TRNS,    KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_TRNS,  \
-  DANGER,     KC_TRNS,    KC_TRNS,    KC_TRNS,          KC_TRNS,    KC_TRNS, /**/   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS, \
-  KC_LSFT,    KC_TRNS,    RGB_TOGG,   RGB_MODE_PLAIN,   KC_TRNS,    KC_TRNS, /**/   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_RSFT,  \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,           LOWER,      KC_SPC,  /**/   KC_SPC,     RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
+  KC_TRNS,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,    /**/   KC_F6,      KC_F7,      KC_F8,      KC_F9,        KC_F10,      KC_F11,  \
+  KC_TAB,     KC_F12,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  /**/   KC_TRNS,    KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_TRNS,  \
+  DANGER,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  /**/   KC_TRNS,    U_MCASE,    U_FUNC,     U_FUNC2,      U_WINK,      KC_TRNS, \
+  KC_LSFT,    KC_TRNS,    RGB_TOGG,   KC_TRNS,    KC_TRNS,    KC_TRNS,  /**/   KC_TRNS,    KC_TRNS,    U_TASK,     U_LINK,       U_SMILE,     KC_RSFT,  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,   /**/   KC_SPC,     RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
 ),
 
 [_DANGER] = LAYOUT( \
@@ -421,7 +443,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return true;
           break;
 
-        case U_CASE:
+        case U_MCASE:
           if (record->event.pressed) {
             SEND_STRING("case  => ");
           } else {
@@ -463,6 +485,139 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return true;
           break;
 
+        case U_TRAIT:
+          if (record->event.pressed) {
+            SEND_STRING("trait ");
+          }
+          return true;
+          break;
+
+        case U_OBJ:
+          if (record->event.pressed) {
+            SEND_STRING("object ");
+          }
+          return true;
+          break;
+
+        case U_CLASS:
+          if (record->event.pressed) {
+            SEND_STRING("class ");
+          }
+          return true;
+          break;
+
+        case U_CASE:
+          if (record->event.pressed) {
+            SEND_STRING("case ");
+          }
+          return true;
+          break;
+
+        case U_ABS:
+          if (record->event.pressed) {
+            SEND_STRING("abstract ");
+          }
+          return true;
+          break;
+
+        case U_SLD:
+          if (record->event.pressed) {
+            SEND_STRING("sealed ");
+          }
+          return true;
+          break;
+
+        case U_FINAL:
+          if (record->event.pressed) {
+            SEND_STRING("final ");
+          }
+          return true;
+          break;
+
+
+        case U_EXT:
+          if (record->event.pressed) {
+            SEND_STRING("extends ");
+          }
+          return true;
+          break;
+
+        case U_WITH:
+          if (record->event.pressed) {
+            SEND_STRING("with ");
+          }
+          return true;
+          break;
+
+        case U_MATCH:
+          if (record->event.pressed) {
+            SEND_STRING("match ");
+          }
+          return true;
+          break;
+
+        case U_PRIV:
+          if (record->event.pressed) {
+            SEND_STRING("private ");
+          }
+          return true;
+          break;
+
+        case U_PCKG:
+          if (record->event.pressed) {
+            SEND_STRING("package ");
+          }
+          return true;
+          break;
+
+        case U_DEF:
+          if (record->event.pressed) {
+            SEND_STRING("def ");
+          }
+          return true;
+          break;
+
+        case U_VAL:
+          if (record->event.pressed) {
+            SEND_STRING("val ");
+          }
+          return true;
+          break;
+
+        case U_OVRD:
+          if (record->event.pressed) {
+            SEND_STRING("override ");
+          }
+          return true;
+          break;
+
+        case U_IMPL:
+          if (record->event.pressed) {
+            SEND_STRING("implicit ");
+          }
+          return true;
+          break;
+
+        case U_IMPT:
+          if (record->event.pressed) {
+            SEND_STRING("import ");
+          }
+          return true;
+          break;
+
+        case U_YIELD:
+          if (record->event.pressed) {
+            SEND_STRING("yield ");
+          }
+          return true;
+          break;
+
+        case U_LAZY:
+          if (record->event.pressed) {
+            SEND_STRING("lazy ");
+          }
+          return true;
+          break;
       }
     return true;
 };
