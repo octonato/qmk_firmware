@@ -7,9 +7,8 @@ enum nyquist_layers {
   _COLEMAK,
   _CAVALCANTI,
   _LOWER,
-  _LOWER_SCALA,
   _RAISE,
-  _RAISE_SCALA,
+  _FN_MEDIA,
   _CODE,
   _DANGER
 };
@@ -17,11 +16,9 @@ enum nyquist_layers {
 enum nyquist_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
-  LSCALA,
   RAISE,
-  RSCALA,
-  CODE,
   FN_MEDIA,
+  CODE,
   DANGER,
 
   U_EQ_LT,    // <=
@@ -133,54 +130,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------,   `------------------------------------------'
  */
 [_CAVALCANTI] = LAYOUT( \
-  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,     /**/    KC_6,        KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
-  KC_TAB,     KC_Q,       KC_W,       KC_F,       KC_R,      KC_J,     /**/    KC_Y,        KC_U,       KC_I,       KC_O,        KC_P,        KC_ENT, \
-  CODE,       KC_A,       KC_S,       KC_H,       KC_T,      KC_D,     /**/    KC_G,        KC_N,       KC_E,       KC_L,        KC_SCLN,     KC_QUOT, \
-  KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,     /**/    KC_K,        KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT , \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/    KC_SPC,      RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
+  KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,      KC_5,     /**/    KC_6,      KC_7,       KC_8,       KC_9,        KC_0,        KC_BSPC, \
+  KC_TAB,     KC_Q,       KC_W,       KC_F,       KC_R,      KC_J,     /**/    KC_Y,      KC_U,       KC_I,       KC_O,        KC_P,        KC_ENT, \
+  CODE,       KC_A,       KC_S,       KC_H,       KC_T,      KC_D,     /**/    KC_G,      KC_N,       KC_E,       KC_L,        KC_SCLN,     KC_QUOT, \
+  KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,     /**/    KC_K,      KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT , \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/    KC_SPC,    RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
 ),
 
 [_LOWER] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  KC_TAB,     U_FWD,      KC_BTN1,    KC_WH_U,    KC_BTN2,   U_EQ_LT,  /**/   U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  LSCALA,     U_BACK,     KC_WH_L,    KC_WH_D,    KC_WH_R,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      RSCALA,  \
-  KC_LSFT,    KC_TILD,    RGB_TOGG,   KC_TRNS,    KC_TRNS,   KC_LT,    /**/   KC_GT,      KC_BRID,    KC_BRIU,    KC__MUTE,    KC_MPLY,      KC_RSFT, \
+  KC_DEL,     U_FWD,      KC_BTN1,    KC_WH_D,    KC_BTN2,   _______,  /**/   _______,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       U_BACK,     KC_WH_R,    KC_WH_U,    KC_WH_L,   _______,  /**/   _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_QUOT,  \
+  KC_LSFT,    KC_TILD,    _______,    _______,    _______,   _______,  /**/   _______,    _______,    KC_LT,      KC_GT,       KC_PIPE,      KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
-
-[_LOWER_SCALA] = LAYOUT( \
-  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   U_EQ_LT,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  LSCALA,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   U_LT_HY,  /**/   U_CASE,     U_FOR,      U_IMPT,     U_LAZY,      KC_TRNS,      RSCALA,  \
-  KC_LSFT,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_LT,    /**/   U_PTLN,     U_MATCH,    U_IMPL,     U_MDONE,     U_PRIV,       KC_RSFT, \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
-),
 
 [_RAISE] = LAYOUT( \
-  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,   KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
-  KC_TAB,     KC_TRNS,    KC_TRNS,    KC_UP,      KC_PIPE,   U_EQ_LT,  /**/   U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  LSCALA,     KC_TRNS,    KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,  /**/   U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      RSCALA,  \
-  KC_LSFT,    KC_TILD,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_LT,    /**/   KC_GT,     KC_TRNS,    KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT, \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
+  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
+  KC_TAB,     U_THRW,     U_WITH,     U_EXT,      U_OVRD,    U_TRAIT,  /**/   _______,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       U_ABS,      U_SLD,      U_DEF,      U_FINAL,   U_PCKG,   /**/   _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_QUOT, \
+  KC_LSFT,    KC_TILD,    U_CASE,     U_CLASS,    U_VAL,     U_OBJ,    /**/   _______,    _______,    KC_LT,      KC_GT,       KC_BSLS,      KC_RSFT, \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
-
-
-[_RAISE_SCALA] = LAYOUT( \
-  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,   KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
-  KC_TAB,     U_THRW,     U_WITH,     U_EXT,      U_OVRD,    U_TRAIT,  /**/   U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  LSCALA,     U_ABS,      U_SLD,      U_DEF,      U_FINAL,   U_PCKG,   /**/   U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      RSCALA,  \
-  KC_LSFT,    KC_TILD,    U_CASE,     U_CLASS,    U_VAL,     U_OBJ,    /**/   KC_GT,     KC_TRNS,    KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT, \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
-),
-
 
 [_CODE] = LAYOUT( \
-  KC_TRNS,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,    /**/  KC_F6,     KC_F7,      KC_F8,      KC_F9,       KC_F10,       KC_DEL,  \
-  KC_TAB,     KC_F11,     KC_F12,     KC_TRNS,    KC_TRNS,    U_EQ_LT,  /**/  U_GT_EQ,   U_EQ_GT,    KC_PIPE,    U_TASK,      U_LINK,       KC_ENT,  \
-  CODE,       KC_TRNS,    KC_TRNS,    DANGER,     KC_TRNS,    U_LT_HY,  /**/  U_HY_GT,   U_FOR,      U_FUNC,     U_FUNC2,     U_WINK,       KC_TRNS, \
-  KC_LSFT,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_LT,    /**/  KC_GT,     U_MATCH,    U_MCASE,    U_MDONE,     U_SMILE,      KC_RSFT, \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,   /**/  KC_SPC,    RAISE,      KC_MRWD,    KC__VOLDOWN, KC__VOLUP,    KC_MNXT  \
+  KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,    /**/  KC_F6,      KC_F7,      KC_F8,      KC_F9,       KC_F10,       KC_DEL,  \
+  KC_TAB,     KC_F11,     KC_F12,     _______,    U_TASK,    U_LINK,   /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       _______,    U_FOR,      U_FUNC,     U_FUNC2,   U_WINK,   /**/   U_CASE,     U_FOR,      U_IMPT,     U_LAZY,      _______,      KC_QUOT, \
+  KC_LSFT,    _______,    U_MATCH,    U_MCASE,    U_MDONE,   U_SMILE,  /**/   U_PTLN,     U_MATCH,    U_IMPL,     U_MDONE,     U_PRIV,       KC_RSFT, \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
+),
+
+[_FN_MEDIA] = LAYOUT( \
+  _______,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,    /**/  KC_F6,      KC_F7,      KC_F8,      KC_F9,       KC_F10,       KC_DEL,  \
+  KC_TAB,     KC_F11,     KC_F12,     _______,    _______,    _______,  /**/  _______,    KC_BRID,    KC_BRIU,    KC__MUTE,    KC_MPLY,      KC_ENT,  \
+  CODE,       _______,    _______,    DANGER,     _______,    _______,  /**/  _______,    _______,    _______,    _______,     _______,      _______, \
+  KC_LSFT,    _______,    RGB_TOGG,   _______,    _______,    _______,   /**/  _______,   _______,    _______,    _______,     _______,      KC_RSFT, \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,   /**/  KC_SPC,     RAISE,      KC_MRWD,    KC__VOLDOWN, KC__VOLUP,    KC_MNXT  \
 ),
 
 
@@ -202,14 +189,15 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-#define COLOR_LOWER         HSV_CYAN
-#define COLOR_RAISE         HSV_MAGENTA
-#define COLOR_CODE          HSV_PINK
-#define COLOR_DANGER        HSV_RED
 #define COLOR_QWERTY        HSV_PURPLE
 #define COLOR_COLEMAK       HSV_ORANGE
 #define COLOR_CAVALCANTI    HSV_GREEN
-#define COLOR_SCALA         HSV_RED
+
+#define COLOR_LOWER         HSV_CYAN
+#define COLOR_RAISE         HSV_MAGENTA
+#define COLOR_FN_MEDIA      HSV_SPRINGGREEN
+#define COLOR_CODE          HSV_RED
+#define COLOR_DANGER        HSV_RED
 
 void change_layer_color(void) {
     if (default_layer_state == 1 << _COLEMAK) {
@@ -259,19 +247,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return false;
           break;
 
-        case LSCALA:
-          if (record->event.pressed) {
-            layer_on(_LOWER_SCALA);
-            rgblight_sethsv(COLOR_SCALA);
-            debug("lower on\n");
-          } else {
-            layer_off(_LOWER_SCALA);
-            change_layer_color();
-            debug("lower off\n");
-          }
-          return false;
-          break;
-
         case RAISE:
           if (record->event.pressed) {
             layer_on(_RAISE);
@@ -288,13 +263,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           break;
 
 
-        case RSCALA:
+        case FN_MEDIA:
           if (record->event.pressed) {
-            layer_on(_RAISE_SCALA);
-            rgblight_sethsv(COLOR_SCALA);
+            layer_on(_FN_MEDIA);
+            rgblight_sethsv(COLOR_FN_MEDIA);
             debug("lower on\n");
           } else {
-            layer_off(_RAISE_SCALA);
+            layer_off(_FN_MEDIA);
             change_layer_color();
             debug("lower off\n");
           }
