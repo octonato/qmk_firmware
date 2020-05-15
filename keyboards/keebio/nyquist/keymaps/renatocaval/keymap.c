@@ -5,9 +5,10 @@ extern keymap_config_t keymap_config;
 enum nyquist_layers {
   _QWERTY,
   _LOWER,
-  _LOWER_SCALA,
+  _LOWER_2,
+  _LOWER_3,
   _RAISE,
-  _RAISE_SCALA,
+  _RAISE_2,
   _FN_MEDIA,
   _CODE,
   _DANGER
@@ -16,9 +17,10 @@ enum nyquist_layers {
 enum nyquist_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
-  LSCALA,
+  LOWER2,
+  LOWER3,
   RAISE,
-  RSCALA,
+  RAISE2,
   FN_MEDIA,
   CODE,
   DANGER,
@@ -66,6 +68,8 @@ enum nyquist_keycodes {
   U_THRW,   // throw        b
   U_FOR,    // for yield    j
   U_MDONE,  // map to Done  j
+  U_DEBUG,
+  U_APPLY,
 
 
   //  RGB
@@ -101,41 +105,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
   U_CMD_BSPC, U_FWD,      KC_BTN1,    KC_WH_D,    KC_BTN2,   U_EQ_LT,  /**/   U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  LSCALA,     U_BACK,     KC_WH_R,    KC_WH_U,    KC_WH_L,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_QUOT, \
+  CODE,       U_BACK,     KC_WH_R,    KC_WH_U,    KC_WH_L,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_QUOT, \
   KC_LSFT,    KC_TILD,    _______,    _______,    _______,   KC_LT,    /**/   KC_GT,      _______,    KC_LT,      KC_GT,       KC_PIPE,      KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
-[_LOWER_SCALA] = LAYOUT( \
+[_LOWER_2] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  U_CMD_BSPC, _______,    _______,    _______,    _______,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  LSCALA,     _______,    _______,    _______,    _______,   _______,  /**/   U_CASE,     U_FOR,      U_IMPL,     U_LAZY,      U_IMPT,       RSCALA,  \
-  KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/   U_PTLN,     U_MATCH,    U_MCASE,    U_MDONE,     U_PRIV,       KC_RSFT, \
+  U_CMD_BSPC, _______,    _______,    KC_UP,      _______,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,   _______,  /**/   U_PTLN,     _______,    U_IMPL,     U_LAZY,      _______,      KC_QUOT, \
+  KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/   U_DEBUG,    U_APPLY,    _______,    _______,     U_PRIV,       KC_RSFT, \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
+),
+
+[_LOWER_3] = LAYOUT( \
+  KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
+  U_CMD_BSPC, _______,    KC_BTN1,    KC_MS_U,    KC_BTN2,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       _______,    KC_MS_L,    KC_MS_D,    KC_MS_R,   _______,  /**/   U_PTLN,     _______,    U_IMPL,     U_LAZY,      _______,      KC_QUOT, \
+  KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/   U_DEBUG,    U_APPLY,    _______,    _______,     U_PRIV,       KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
 [_RAISE] = LAYOUT( \
   KC_TILD,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
   KC_TAB,     _______,    _______,    _______,    _______,   U_EQ_LT,  /**/   U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  LSCALA,     _______,    _______,    _______,    _______,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      RSCALA,  \
-  KC_LSFT,    _______,    _______,    _______,    _______,   KC_LT,    /**/   KC_GT,      _______,    KC_LT,      KC_GT,       KC_BSLS,      KC_RSFT, \
+  CODE,       _______,    _______,    _______,    _______,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_QUOT, \
+  KC_LSFT,    KC_TILD,    _______,    _______,    _______,   KC_LT,    /**/   KC_GT,      _______,    KC_LT,      KC_GT,       KC_BSLS,      KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
-[_RAISE_SCALA] = LAYOUT( \
+[_RAISE_2] = LAYOUT( \
   KC_TILD,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,     KC_RPRN,      KC_DEL,  \
   KC_TAB,     U_THRW,     U_WITH,     U_EXT,      U_OVRD,    U_TRAIT,  /**/   _______,    _______,    _______,    _______,     _______,      KC_ENT,  \
-  LSCALA,     U_ABS,      U_SLD,      U_DEF,      U_FINAL,   U_PCKG,   /**/   _______,    _______,    _______,    _______,     _______,      RSCALA,  \
-  KC_LSFT,    KC_TILD,    U_CASE,     U_CLASS,    U_VAL,     U_OBJ,    /**/   _______,    _______,    _______,    _______,     _______,      KC_RSFT, \
+  CODE,       U_ABS,      U_SLD,      U_DEF,      U_FINAL,   U_PCKG,   /**/   _______,    _______,    _______,    _______,     _______,      KC_QUOT, \
+  KC_LSFT,    U_IMPT,     U_CASE,     U_CLASS,    U_VAL,     U_OBJ,    /**/   _______,    _______,    _______,    _______,     _______,      KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
 [_CODE] = LAYOUT( \
   KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,    /**/  KC_F6,      KC_F7,      KC_F8,      KC_F9,       KC_F10,       KC_DEL,  \
-  KC_TAB,     KC_F11,     KC_F12,     _______,    _______,   _______,  /**/  _______,    _______,    KC_PIPE,    U_LINK,      U_TASK,       KC_ENT,  \
-  CODE,       _______,    _______,    _______,    _______,   _______,  /**/  _______,    U_FOR,      U_FUNC,     U_FUNC2,     U_WINK,       KC_QUOT, \
-  KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/  _______,    U_MATCH,    U_MCASE,    U_MDONE,     U_SMILE,      KC_RSFT, \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/  KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
+  KC_TAB,     KC_F11,     KC_F12,     KC_PGUP,    _______,   _______,  /**/  _______,    _______,    KC_PIPE,    U_LINK,      U_TASK,       KC_ENT,  \
+  CODE,       _______,    KC_HOME,    KC_PGDN,    KC_END,    _______,  /**/  U_PTLN,     U_FOR,      U_FUNC,     U_FUNC2,     U_WINK,       KC_QUOT, \
+  KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/  U_DEBUG,    U_MATCH,    U_MCASE,    U_MDONE,     U_SMILE,      KC_RSFT, \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER3,    KC_SPC,   /**/  KC_SPC,     RAISE2,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
 
@@ -144,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,     KC_F11,     KC_F12,     _______,    _______,    _______,  /**/  _______,    KC_BRID,    KC_BRIU,    KC__MUTE,    KC_MPLY,      KC_ENT,  \
   CODE,       _______,    _______,    DANGER,     _______,    _______,  /**/  _______,    _______,    _______,    _______,     _______,      _______, \
   KC_LSFT,    _______,    RGB_TOGG,   _______,    _______,    _______,   /**/  _______,   _______,    _______,    _______,     _______,      KC_RSFT, \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,   /**/  KC_SPC,     RAISE,      KC_MRWD,    KC__VOLDOWN, KC__VOLUP,    KC_MNXT  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER2,     KC_SPC,   /**/  KC_SPC,     RAISE2,     KC_MRWD,    KC__VOLDOWN, KC__VOLUP,    KC_MNXT  \
 ),
 
 
@@ -168,11 +180,11 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 #define COLOR_QWERTY        HSV_PURPLE
 
-#define COLOR_LOWER         HSV_GREEN
-#define COLOR_RAISE         HSV_GREEN
-#define COLOR_FN_MEDIA      HSV_SPRINGGREEN
-#define COLOR_CODE          HSV_RED
-#define COLOR_SCALA         HSV_RED
+#define COLOR_LAYER         HSV_SPRINGGREEN
+#define COLOR_LAYER2        HSV_GREEN
+#define COLOR_LAYER3        HSV_CORAL
+#define COLOR_FN_MEDIA      HSV_CYAN
+#define COLOR_CODE          HSV_CYAN
 #define COLOR_DANGER        HSV_RED
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -201,7 +213,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LOWER:
           if (record->event.pressed) {
             layer_on(_LOWER);
-            rgblight_sethsv(COLOR_LOWER);
+            rgblight_sethsv(COLOR_LAYER);
             update_tri_layer(_LOWER, _RAISE, _CODE);
             debug("lower on\n");
           } else {
@@ -213,13 +225,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return false;
           break;
 
-        case LSCALA:
+        case LOWER2:
           if (record->event.pressed) {
-            layer_on(_LOWER_SCALA);
-            rgblight_sethsv(COLOR_SCALA);
+            layer_on(_LOWER_2);
+            rgblight_sethsv(COLOR_LAYER2);
             debug("lower on\n");
           } else {
-            layer_off(_LOWER_SCALA);
+            layer_off(_LOWER_2);
+            rgblight_sethsv(COLOR_QWERTY);
+            debug("lower off\n");
+          }
+          return false;
+          break;
+
+        case LOWER3:
+          if (record->event.pressed) {
+            layer_on(_LOWER_3);
+            rgblight_sethsv(COLOR_LAYER3);
+            debug("lower on\n");
+          } else {
+            layer_off(_LOWER_3);
             rgblight_sethsv(COLOR_QWERTY);
             debug("lower off\n");
           }
@@ -229,7 +254,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RAISE:
           if (record->event.pressed) {
             layer_on(_RAISE);
-            rgblight_sethsv(COLOR_RAISE);
+            rgblight_sethsv(COLOR_LAYER);
             update_tri_layer(_LOWER, _RAISE, _CODE);
             debug("raise on\n");
           } else {
@@ -241,13 +266,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           return false;
           break;
 
-        case RSCALA:
+        case RAISE2:
           if (record->event.pressed) {
-            layer_on(_RAISE_SCALA);
-            rgblight_sethsv(COLOR_SCALA);
+            layer_on(_RAISE_2);
+            rgblight_sethsv(COLOR_LAYER2);
             debug("lower on\n");
           } else {
-            layer_off(_RAISE_SCALA);
+            layer_off(_RAISE_2);
             rgblight_sethsv(COLOR_QWERTY);
             debug("lower off\n");
           }
@@ -497,11 +522,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case U_PTLN:
           if (record->event.pressed) {
-            SEND_STRING("println");
+            SEND_STRING("println(");
           }
           return true;
           break;
 
+        case U_DEBUG:
+          if (record->event.pressed) {
+            SEND_STRING("println(s\"[DEBUG] >=> \")");
+          } else {
+              SEND_STRING(SS_TAP(X_LEFT) SS_TAP(X_LEFT));
+          }
+          return true;
+          break;
+
+        case U_APPLY:
+          if (record->event.pressed) {
+            SEND_STRING("apply(");
+          }
+          return true;
+          break;
         case U_DEF:
           if (record->event.pressed) {
             SEND_STRING("def ");
