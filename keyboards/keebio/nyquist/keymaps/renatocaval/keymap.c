@@ -104,24 +104,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  U_CMD_BSPC, U_FWD,      KC_BTN1,    KC_WH_D,    KC_BTN2,   U_EQ_LT,  /**/   U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       U_BACK,     KC_WH_R,    KC_WH_U,    KC_WH_L,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_QUOT, \
+  KC_DEL,     U_FWD,      KC_BTN1,    KC_UP,      KC_BTN2,   U_EQ_LT,  /**/   U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       U_BACK,     KC_LEFT,    KC_DOWN,    KC_RGHT,   U_LT_HY,  /**/   U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_QUOT, \
   KC_LSFT,    KC_TILD,    _______,    _______,    _______,   KC_LT,    /**/   KC_GT,      _______,    KC_LT,      KC_GT,       KC_PIPE,      KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
 [_LOWER_2] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  U_CMD_BSPC, _______,    _______,    KC_UP,      _______,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       _______,    KC_LEFT,    KC_DOWN,    KC_RGHT,   _______,  /**/   U_PTLN,     _______,    U_IMPL,     U_LAZY,      _______,      KC_QUOT, \
+  KC_DEL,     _______,    _______,    KC_MS_U,    _______,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       _______,    KC_MS_L,    KC_MS_D,    KC_MS_R,   _______,  /**/   U_PTLN,     _______,    U_IMPL,     U_LAZY,      _______,      KC_QUOT, \
   KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/   U_DEBUG,    U_APPLY,    _______,    _______,     U_PRIV,       KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
 [_LOWER_3] = LAYOUT( \
   KC_ESC,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  U_CMD_BSPC, _______,    KC_BTN1,    KC_MS_U,    KC_BTN2,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       _______,    KC_MS_L,    KC_MS_D,    KC_MS_R,   _______,  /**/   U_PTLN,     _______,    U_IMPL,     U_LAZY,      _______,      KC_QUOT, \
+  KC_DEL,     _______,    _______,    KC_WH_D,    _______,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       _______,    KC_WH_R,    KC_WH_U,    KC_WH_L,   _______,  /**/   U_PTLN,     _______,    U_IMPL,     U_LAZY,      _______,      KC_QUOT, \
   KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/   U_DEBUG,    U_APPLY,    _______,    _______,     U_PRIV,       KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_CODE] = LAYOUT( \
   KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,     KC_F5,    /**/  KC_F6,      KC_F7,      KC_F8,      KC_F9,       KC_F10,       KC_DEL,  \
-  KC_TAB,     KC_F11,     KC_F12,     KC_PGUP,    _______,   _______,  /**/  _______,    _______,    KC_PIPE,    U_LINK,      U_TASK,       KC_ENT,  \
+  U_CMD_BSPC, KC_F11,     KC_F12,     KC_PGUP,    _______,   _______,  /**/  _______,    _______,    KC_PIPE,    U_LINK,      U_TASK,       KC_ENT,  \
   CODE,       _______,    KC_HOME,    KC_PGDN,    KC_END,    _______,  /**/  U_PTLN,     U_FOR,      U_FUNC,     U_FUNC2,     U_WINK,       KC_QUOT, \
   KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/  U_DEBUG,    U_MATCH,    U_MCASE,    U_MDONE,     U_SMILE,      KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER3,    KC_SPC,   /**/  KC_SPC,     RAISE2,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
