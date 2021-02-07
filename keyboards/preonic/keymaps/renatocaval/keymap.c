@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,      KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,        KC_P,        KC_ENT,  \
   CODE,       KC_A,       KC_S,       KC_D,       KC_F,      KC_G,       KC_H,       KC_J,       KC_K,       KC_L,        KC_SCLN,     KC_QUOT, \
   KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,      KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,      KC_SLSH,     KC_RSFT,  \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    KC_LGUI,    LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT  \
 ),
 
 
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,     KC_Q,       KC_W,       KC_COLN,    KC_R,      U_EQ_LT,    U_GT_EQ,    U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
   CODE,       KC_PIPE,    KC_SLSH,    KC_D,       KC_F,      U_LT_HY,    U_HY_GT,    KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
   KC_LSFT,    KC_TILD,    KC_X,       KC_C,       KC_LT,     U_LT_CL,    U_CL_LT,    KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    KC_LGUI,    LOWER,     KC_SPC,     KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_RAISE] = LAYOUT_preonic_grid( \
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,     KC_Q,       KC_W,       KC_COLN,    KC_R,      U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_UP,      KC_LBRC,     KC_RBRC,      KC_ENT,  \
   CODE,       KC_PIPE,    KC_SLSH,    KC_D,       KC_F,      U_LT_HY,    U_HY_GT,   KC_LEFT,    KC_DOWN,    KC_RGHT,     KC_COLN,      KC_DQUO, \
   KC_LSFT,    KC_TILD,    KC_X,       KC_C,       KC_LT,     U_LT_CL,    U_CL_LT,   KC_GT,      KC_COMM,    KC_DOT,      KC_BSLS,      KC_RSFT,\
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    KC_LGUI,    LOWER,     KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_CODE] = LAYOUT_preonic_grid( \
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,     U_NOT_EQ,   U_EQ,       U_CL_SPC,   KC_EXLM,    U_EQ_LT,    U_GT_EQ,   U_EQ_GT,    KC_PIPE,    U_TASK,      U_LINK,       KC_ENT,  \
   CODE,       KC_A,       U_EC_SAVE,  KC_PIPE,    KC_QUES,    U_LT_HY,    U_HY_GT,   U_CASE,     U_FUNC,     U_FUNC2,     U_WINK,       U_TR_QT, \
   KC_LSFT,    KC_NO,      U_CMT2,     U_CMT1,     KC_LT,      U_LT_CL,    U_CL_LT,   U_AND,      U_OR,       KC_DOT,      U_SMILE,      KC_RSFT,\
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    KC_LGUI,    LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END  \
 ),
 
 [_FN_MEDIA ] = LAYOUT_preonic_grid( \
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,     KC_F12,     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,     KC_BRID,    KC_BRIU,    KC__MUTE,     KC_MPLY,     KC_NO,  \
   KC_NO,      KC_NO,      KC_NO,      DANGER,     KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_NO, \
   KC_LSFT,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,     KC_NO,      KC_NO,      KC_NO,        KC_NO,       KC_RSFT,  \
-  FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
+  FN_MEDIA,   KC_LCTL,    KC_LALT,    KC_LGUI,    LOWER,      KC_SPC,     KC_SPC,    RAISE,      KC_MRWD,    KC__VOLDOWN,  KC__VOLUP,   KC_MNXT  \
 ),
 
 [_DANGER] = LAYOUT_preonic_grid( \
