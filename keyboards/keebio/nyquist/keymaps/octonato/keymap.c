@@ -109,9 +109,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER_2] = LAYOUT( \
   KC_DEL,     KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,    KC_PERC,  /**/   KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_MINUS,    KC_EQUAL,     KC_DEL,  \
-  U_CMD_BSPC, _______,    _______,    KC_WH_D,    _______,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
-  CODE,       _______,    KC_WH_R,    KC_WH_U,    KC_WH_L,   _______,  /**/   U_PTLN,     U_FOR,      U_IMPL,     U_LAZY,      U_APPLY,      KC_QUOT, \
-  KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/   U_DEBUG,    U_MATCH,    U_MCASE,    U_MDONE,     U_FUNC,      KC_RSFT, \
+  U_CMD_BSPC, _______,    KC_BTN1,    KC_MS_U,    KC_BTN2,   _______,  /**/   U_YIELD,    U_EQ_GT,    KC_PIPE,    KC_LBRC,     KC_RBRC,      KC_ENT,  \
+  CODE,       _______,    KC_MS_L,    KC_MS_D,    KC_MS_R,   _______,  /**/   U_PTLN,     U_FOR,      U_IMPL,     U_LAZY,      U_APPLY,      KC_QUOT, \
+  KC_LSFT,    _______,    _______,    _______,    _______,   _______,  /**/   U_DEBUG,    U_MATCH,    U_MCASE,    U_MDONE,     U_FUNC,       KC_RSFT, \
   FN_MEDIA,   KC_LCTL,    KC_LALT,    U_LGUI,     LOWER,     KC_SPC,   /**/   KC_SPC,     RAISE,      KC_HOME,    KC_PGDN,     KC_PGUP,      KC_END   \
 ),
 
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DANGER] = LAYOUT( \
   _______,    _______,    _______,    _______,    _______,    _______,  /**/   DF(_QWERTY),   _______,        _______,          _______,    _______,    RESET,\
   _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    DEBUG,\
-  _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    _______,\
+  _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    AG_NORM,    AG_SWAP,\
   _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    _______,\
   _______,    _______,    _______,    _______,    _______,    _______,  /**/   _______,       _______,        _______,          _______,    _______,    _______\
 )
