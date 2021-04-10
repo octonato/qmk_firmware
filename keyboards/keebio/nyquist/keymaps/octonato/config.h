@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Mouse cursor
 #define MOUSEKEY_DELAY 	            10
-#define MOUSEKEY_INTERVAL 	        50
+#define MOUSEKEY_INTERVAL 	        80
 #define MOUSEKEY_MAX_SPEED 	        6
 #define MOUSEKEY_TIME_TO_MAX 	    1
 
